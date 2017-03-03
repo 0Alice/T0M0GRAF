@@ -16,7 +16,7 @@ public class T0M0GRAF {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+         
     }
     
 }
