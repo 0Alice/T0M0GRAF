@@ -5,6 +5,7 @@
  */
 package t0m0graf;
 
+import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -36,11 +38,13 @@ public class T0M0GRAF extends JPanel {
      */
     public static void main(String[] args) {
         frame = new JFrame("Tomograf");
+        frame.setSize(600, 600);
         try {
             T0M0GRAF tomograf = new T0M0GRAF();
         } catch (IOException ex) {
             Logger.getLogger(T0M0GRAF.class.getName()).log(Level.SEVERE, null, ex);
         }
+       // frame.add(Box.createRigidArea(new Dimension(0, 5)));
         frame.setVisible(true);
     }
 
@@ -57,7 +61,7 @@ public class T0M0GRAF extends JPanel {
     /**
      * Wczytywanie obrazu
      *
-     * @param path sciezka do pliku z obrazem tomografii
+     * @param path stream pliku z obrazem tomografii
      */
     public static void readIn(InputStream path) {
         try {
