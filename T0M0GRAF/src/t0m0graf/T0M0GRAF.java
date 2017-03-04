@@ -39,11 +39,7 @@ public class T0M0GRAF extends JPanel {
     public static void main(String[] args) {
         frame = new JFrame("Tomograf");
         frame.setSize(600, 600);
-        try {
-            T0M0GRAF tomograf = new T0M0GRAF();
-        } catch (IOException ex) {
-            Logger.getLogger(T0M0GRAF.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Picture picture = new Picture();
        // frame.add(Box.createRigidArea(new Dimension(0, 5)));
         frame.setVisible(true);
     }
@@ -54,27 +50,6 @@ public class T0M0GRAF extends JPanel {
      * @throws IOException
      */
     public T0M0GRAF() throws IOException {
-        readIn(getClass().getResourceAsStream("obraz.bmp"));
-
-    }
-
-    /**
-     * Wczytywanie obrazu
-     *
-     * @param path stream pliku z obrazem tomografii
-     */
-    public static void readIn(InputStream path) {
-        try {
-            JLabel label1 = new JLabel();
-            frame.add(label1);
-            BufferedImage bi;
-            bi = ImageIO.read(path);
-            ImageIcon imgIcon = new ImageIcon(bi);
-            label1.setIcon(imgIcon);
-        } catch (IOException ex) {
-            Logger.getLogger(T0M0GRAF.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
 }
