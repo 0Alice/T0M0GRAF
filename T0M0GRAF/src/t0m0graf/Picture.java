@@ -24,6 +24,8 @@ import java.awt.image.PixelGrabber;
  */
 public class Picture {
 
+    BufferedImage bi;
+
     public Picture() {
         readIn(getClass().getResourceAsStream("obraz.bmp"));
         //tu trzeba zmienic na choosera
@@ -36,7 +38,7 @@ public class Picture {
      */
     public void readIn(InputStream path) {
         try {
-            BufferedImage bi;
+
             JLabel label1 = new JLabel();
             frame.add(label1);
             bi = ImageIO.read(path);
@@ -46,4 +48,13 @@ public class Picture {
             Logger.getLogger(T0M0GRAF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public BufferedImage getBi() {
+        return bi;
+    }
+
+    public void setBi(BufferedImage bi) {
+        this.bi = bi;
+    }
+
 }

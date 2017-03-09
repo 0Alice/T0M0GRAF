@@ -41,6 +41,7 @@ public class T0M0GRAF extends JPanel {
         frame = new JFrame("Tomograf");
         frame.setSize(600, 600);
             Picture picture = new Picture();
+            Sinogram sinogram=new Sinogram(picture,1/2,20);
        // frame.add(Box.createRigidArea(new Dimension(0, 5)));
         frame.setVisible(true);
     }
