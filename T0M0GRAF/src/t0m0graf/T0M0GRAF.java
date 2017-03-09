@@ -34,6 +34,8 @@ public class T0M0GRAF extends JPanel {
     public static JFrame frame;
     public static JLabel label1 = new JLabel();
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -42,7 +44,7 @@ public class T0M0GRAF extends JPanel {
         Picture picture = new Picture();
         ImageIcon imgIcon = new ImageIcon(picture.getBi());
         label1.setIcon(imgIcon);
-        Sinogram sinogram = new Sinogram(picture, 1 / 2, 20);
+        Sinogram sinogram = new Sinogram(picture, 90, 20);
         // frame.add(Box.createRigidArea(new Dimension(0, 5)));
 
     }
@@ -53,7 +55,6 @@ public class T0M0GRAF extends JPanel {
     public T0M0GRAF() {
         frame = new JFrame("Tomograf");
         frame.setSize(600, 600);
-
         frame.add(label1);
         frame.setVisible(true);
     }
