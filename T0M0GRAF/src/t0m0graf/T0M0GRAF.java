@@ -32,26 +32,30 @@ public class T0M0GRAF extends JPanel {
      * Okienko
      */
     public static JFrame frame;
+    public static JLabel label1 = new JLabel();
 
-    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        frame = new JFrame("Tomograf");
-        frame.setSize(600, 600);
-            Picture picture = new Picture();
-            Sinogram sinogram=new Sinogram(picture,1/2,20);
-       // frame.add(Box.createRigidArea(new Dimension(0, 5)));
-        frame.setVisible(true);
+        T0M0GRAF tom = new T0M0GRAF();
+        Picture picture = new Picture();
+        ImageIcon imgIcon = new ImageIcon(picture.getBi());
+        label1.setIcon(imgIcon);
+        Sinogram sinogram = new Sinogram(picture, 1 / 2, 20);
+        // frame.add(Box.createRigidArea(new Dimension(0, 5)));
+
     }
 
     /**
      * Tworzenie tomografu
-     *
-     * @throws IOException
      */
-    public T0M0GRAF() throws IOException {
+    public T0M0GRAF() {
+        frame = new JFrame("Tomograf");
+        frame.setSize(600, 600);
+
+        frame.add(label1);
+        frame.setVisible(true);
     }
 
 }
