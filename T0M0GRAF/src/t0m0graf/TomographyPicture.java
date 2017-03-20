@@ -14,9 +14,11 @@ import java.awt.image.BufferedImage;
  */
 public class TomographyPicture {
 
-    Color[][] pix;
-    int[][][] endPix;
+    private Color[][] pix;
+    private int[][][] endPix;
+    private int[][] normalColor;
     private BufferedImage buf;
+    private int pictureWidth;
 
  
     private BufferedImage sinogram;
@@ -35,6 +37,7 @@ public class TomographyPicture {
         emitersAmount = sinogram.getEmitersAmount();
         detectorsAmount = sinogram.getDetectorsAmount();
         buf = new BufferedImage(img.getBi().getWidth(), img.getBi().getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+        pictureWidth=img.getBi().getWidth();
 
         int r = (img.getBi().getWidth() / 2) - 5;
         BufferedImage bi = img.getBi();
@@ -68,11 +71,50 @@ public class TomographyPicture {
                 // setRGB(pix[i][j].getRed(),pix[i][j].getGreen(),pix[i][j].getBlue());
                 }
         }
+        normalColor=new int[pictureWidth][pictureWidth];
+        for(int i=0;i<pictureWidth;i++){
+       for(int j=0;j<pictureWidth;j++){
+           normalColor[i][j]=0;
+           if(endPix[i][j][1]!=0){
+               normalColor[i][j]=endPix[i][j][0]/endPix[i][j][1];
+           }
+       }
+       
+    }
+        normalize();
         for(int i=0;i<img.getBi().getWidth();i++){
        for(int j=0;j<img.getBi().getWidth();j++){
-         Color col=new Color(endPix[i][j][0]/endPix[i][j][1],endPix[i][j][0]/endPix[i][j][1],endPix[i][j][0]/endPix[i][j][1]);
+         Color col=new Color(normalColor[i][j],normalColor[i][j],normalColor[i][j]);
             buf.setRGB(i, j, col.getRGB());  
        }
+    }
+        /*
+        for(int i=0;i<img.getBi().getWidth();i++){
+       for(int j=0;j<img.getBi().getWidth();j++){
+           int colh=0;
+           if(endPix[i][j][1]!=0){
+               colh=endPix[i][j][0]/endPix[i][j][1];
+           }
+         Color col=new Color(colh,colh,colh);
+            buf.setRGB(i, j, col.getRGB());  
+       }
+    }
+        */
+    }
+    private void normalize(){
+        int max=0;
+        for(int []tab:normalColor){
+            for(int e:tab){
+                if(e>max){
+                    max=e;
+                }
+            }
+        }
+         for(int i=0;i<pictureWidth;i++){
+       for(int j=0;j<pictureWidth;j++){
+           normalColor[i][j]=normalColor[i][j]*(255/max);
+       }
+        
     }
     }
 

@@ -45,12 +45,16 @@ public class T0M0GRAF extends JPanel {
     public static JFrame frame;
     public static JLabel label1 = new JLabel();
     public static JLabel label2 = new JLabel();
+    public static JLabel label3 = new JLabel();
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        T0M0GRAF tom = new T0M0GRAF();
+       // T0M0GRAF tom = new T0M0GRAF();
+       UserInterface gui=new UserInterface(1000);
+       
+       
         Picture picture = new Picture();
         ImageIcon imgIcon = new ImageIcon(picture.getBi());
         label1.setIcon(imgIcon);
